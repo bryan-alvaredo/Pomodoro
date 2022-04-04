@@ -1,0 +1,590 @@
+///VARIABLES
+$rojo: #FC4850;
+$gris: #5B5656;
+
+///FUNCIONES
+@mixin color-align-margin {
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+@mixin flex ($direccion) {
+    $dir: $direccion;
+    display: flex;
+    flex-direction: $dir;
+}
+///FIN VARIABLES Y FUNCIONES
+
+body {
+    @include flex (column);
+    margin: auto;
+    font-family: 'K2D', sans-serif;
+}
+
+///SECCION HEADER
+header {
+    @include flex (row);
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    .icono {
+        width: 2rem;
+        height: 2rem;
+        padding: 0.4rem 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: $rojo;
+        margin: 0;
+    }
+
+    nav {
+        position: absolute;
+        margin: 0;
+        width: 100%;
+
+        .activador {
+            position: absolute;
+            margin: 0;
+            width: 1.2rem;
+            height: 1rem;
+            right: 1rem;
+            opacity: 0;
+            &:not(:checked) ~ ul {
+                display: none;
+            }
+            &:checked ~ .fa-xmark {
+                display: inline;
+            }
+            &:checked ~ .menu {
+                display: none;
+            }
+        }
+
+        .menu {
+            width: 1.2rem;
+            height: 1rem;
+            float: right;
+            padding-right: 1rem;
+        }
+
+        .fa-xmark {
+            color: #CE5D5B;
+            float: right;
+            padding-right: 1rem;
+            font-size: 1.6rem;
+            display: none;
+        }
+
+        ul {
+            list-style: none;
+            @include flex (column);
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: $rojo;
+            top: 2.2rem;
+        }
+
+        li {
+            width: 100%;
+            font-size: 1.3rem;
+            padding: 0.7rem 0;
+            text-align: center;
+
+            a {
+                @include color-align-margin();
+                text-decoration: none;
+                cursor: pointer;
+            }
+            a:hover {
+                text-decoration-line: underline;
+            }
+        }
+    }
+}
+
+//SECCION PORTADA
+.portada {
+    @include flex (column);
+    align-items: center;
+    background-color: $gris;
+
+    img {
+        width: 12rem;
+        padding-top: 4rem;
+    }
+
+    div {
+        @include flex (column);
+        align-items: center;
+
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 2.4rem;
+            padding: 0.2rem 0;
+        }
+    
+        p {
+            color: white;
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 200;
+            text-align: center;
+            width: 70%;
+            padding-bottom: 1.8rem;
+        }
+    }
+}
+
+///SECCION TECNICA
+.tecnica {
+    @include flex (column);
+    align-items: center;
+    padding-bottom: 1rem;
+    
+    h2 {
+        margin: 0;
+        color: $rojo;
+        font-size: 2.25rem;
+        padding: 1rem 0;
+    }
+
+    .descripcion {
+        margin: 0;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 0 2rem 2rem 2rem;
+    }
+
+    div {
+        div {
+            background-color: $rojo;
+            width: 13rem;
+            height: 13rem;
+            border-radius: 100%;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            
+            p {
+                color: white;
+                margin: 0;
+                font-size: 1.53rem;
+                text-align: center;
+                padding: 0 1.5rem;
+            }
+        }
+    }  
+}
+
+///SECCION INFORMACION
+.informacion {
+    background-color: $gris;
+
+    .detalles {
+        @include flex (column);
+        align-items: center;
+        padding-bottom: 4rem;
+
+        h2 {
+            @include color-align-margin();
+            font-size: 2.3rem;
+            padding: 1.5rem 0;
+        }
+
+        p {
+            @include color-align-margin();
+            font-size: 1.5rem;
+            font-weight: 200;
+            padding: 0 3.1rem 2rem 3.1rem;
+
+            span {
+                display: block;
+            }
+        }
+
+        div {
+            width: 55%;
+            @include flex (column);
+
+            a {
+                @include color-align-margin();
+                text-decoration: none;
+                background-color: $rojo;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                padding: 0.5rem 0;
+                width: 100%;
+                border-radius: 5rem;
+                cursor: pointer;
+            }
+            a:hover {
+                text-decoration-line: underline;
+            }
+        }
+    }
+
+    .imagen-timer {
+        img {
+            display: none;
+        }
+    }
+}
+
+///SECCION TESTIMONIOS
+.testimonios {
+    @include flex (column);
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+        margin: 0;
+        padding: 1rem 0 2rem 0;
+        color: $rojo;
+        text-align: center;
+        font-size: 2.3rem;
+    }
+
+    section {
+        @include flex (row);
+        justify-content: center;
+        padding: 0 0 5rem 0;
+
+        .comentarios {
+            display: grid;
+            grid-template-columns: 4.5rem 1fr;
+            row-gap: 2rem;
+            width: 69%;
+
+            img {
+                width: 4.5rem;
+                border-radius: 100%;
+            }
+
+            article {
+                @include flex (column);
+                justify-content: space-between;
+                padding: 0.3rem 0;
+
+                p {
+                    font-style: italic;
+                    font-size: 0.9rem;
+                    margin: 0 0 0 0.6rem;
+                    color: #686868;
+                    
+                    span {
+                        display: block;
+                    }
+                }
+
+                .firma {
+                    font-style: normal;
+                    font-weight: bold;
+                    color: $rojo;
+                }
+            }
+        }
+    }
+}
+
+///SECCION FINAL
+.final {
+    background-color: $rojo;
+    @include flex (column);
+    align-items: center;
+
+    h2 {
+        @include color-align-margin();
+        font-size: 2.3rem;
+        font-weight: 600;
+        padding: 2rem 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0;
+        margin-bottom: 5rem;
+        padding: 0.3rem 0;
+        color: $rojo;
+        background-color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        width: 13rem;
+        border-radius: 5rem;
+        text-align: center;
+        cursor: pointer;
+    }
+    a:hover {
+        text-decoration-line: underline;
+    }
+
+    footer {
+        background-color: #34495E;
+        width: 100%;
+
+        p {
+            @include color-align-margin();
+            padding: 1rem 0;
+            font-size: 0.85rem;
+    
+            span {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 721px) {
+    ///SECCION HEADER
+    header {
+        @include flex (row);
+        align-items: center;
+        width: 100%;
+        padding-bottom: 0.4rem;
+        
+        nav {
+            margin: 0;
+            width: 100%;
+            position: initial;
+            @include flex (row);
+    
+            .activador {
+                display: none;
+                &:not(:checked) ~ ul {
+                    display: flex;
+                }
+                &:checked ~ .fa-xmark {
+                    display: none;
+                }
+                &:checked ~ .menu {
+                    display: none;
+                }
+            }
+    
+            .menu, .fa-xmark {
+                display: none;
+            }
+    
+            ul {
+                list-style: none;
+                @include flex (row);
+                justify-content: flex-end;
+                position: initial;
+                margin: 0;
+                padding: 0;
+                background-color: white;
+                top: 0;
+    
+                li {
+                    width: 8rem;
+                    padding: 0;
+                    text-align: center;
+        
+                    a {
+                        color: $gris;
+                        font-size: 1rem;
+                    }
+                    a:hover {
+                        text-decoration-line: underline;
+                    }
+                }
+
+                .boton-usar {
+                    width: 9rem;
+
+                    .usar {
+                        background-color: $rojo;
+                        color: white;
+                        padding: 0.2rem 3rem;
+                        border-radius: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    ///SECCION PORTADA
+    .portada {
+        @include flex(row-reverse);
+        justify-content: space-between;
+
+        img {
+            padding: 7rem 8rem 7rem 0;
+        }
+
+        div {
+            @include flex(column);
+            align-items: flex-start;
+            padding-left: 6.5rem;
+
+            h2 {
+                padding: 0;
+                font-size: 3.5rem;
+            }
+
+            p {
+                padding: 0;
+                text-align: left;
+                font-size: 1.7rem;
+            }
+        }
+    }
+
+    ///SECCION TECNICA
+    .tecnica {
+        padding-bottom: 3rem;
+
+        h2 {
+            align-self: flex-start;
+            font-size: 4rem;
+            padding: 1.5rem 3rem;
+        }
+
+        .descripcion {
+            align-self: flex-start;
+            padding: 0;
+            padding-left: 3rem;
+            font-size: 1.9rem;
+            text-align: left;
+            width: 80%;
+        }
+
+        div {
+            @include flex(row);
+            justify-content: space-between;
+            width: 90%;
+
+            div {
+                width: 10rem;
+                height: 10rem;
+
+                p {
+                    padding: 0 1rem;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    ///SECCION INFORMACION
+    .informacion {
+        @include flex (row);
+        padding: 4rem 5rem 0 3rem;
+
+        .detalles {
+            @include flex (column);
+            align-items: flex-start;
+            padding: 0;
+
+            h2 {
+                font-size: 4rem;
+                padding: 0 0 1.4rem 0;
+            }
+
+            p {
+                text-align: left;
+                font-size: 2rem;
+                padding: 0 0 2rem 0;
+                width: 60%;
+            }
+
+            div {
+                @include flex (row);
+                justify-content: space-between;
+                width: 55%;
+                padding: 1rem 0 3rem 0;
+
+                a {
+                    font-size: 1.2rem;
+                    width: 10rem;
+                    padding: 0.3rem 0;
+                }
+            }
+        }
+
+        .imagen-timer {
+            width: 60%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            
+            img { 
+                display: inline;
+                height: 30rem;
+            }
+        }
+    }
+
+    ///SECCION TESTIMONIOS
+    .testimonios {
+        @include flex (column);
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 1rem 3rem;
+
+        h2 {
+            font-size: 4rem;
+            padding: 0;
+        }
+
+        section {
+            width: 100%;
+            padding: 5rem 0 4rem 0;
+
+            .comentarios {
+                display: grid;
+                grid-template-columns: repeat(3, 6rem 1fr);
+                width: 100%;
+
+                img {
+                    width: 6rem;
+                }
+
+                article {
+                    width: 80%;
+                    padding: 0.5rem 0;
+
+                    p {
+                        margin: 0 0 0 0.9rem;
+
+                        span {
+                            display: inline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ///SECCION FINAL
+    .final {
+        h2 {
+            font-size: 3rem;
+            padding: 5.5rem 0 2.5rem 0;
+        }
+
+        a {
+            width: 11rem;
+            font-weight: 500;
+            margin-bottom: 5rem;
+        }
+
+        footer {
+            p {
+                font-size: 1rem;
+                padding: 2rem 0;
+
+                span {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
